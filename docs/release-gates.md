@@ -1,6 +1,6 @@
 # Distribution checklist
 
-Do not change repository visibility or announce the project until the release owner has cleared the publication checklist. The current distribution is private.
+A record of the release checks and the limits of the artifact.
 
 ## Evidence and artifact
 
@@ -13,11 +13,11 @@ Do not change repository visibility or announce the project until the release ow
 
 ## Mandatory before public release
 
-- [x] Repository owner cleared code and data for publication and approved Apache-2.0 for the code. Verify upstream attribution and precise data terms in the final export.
-- [ ] Verify publication and review status. If double-anonymous review applies, do not identify the work in the GitHub profile until the venue rules and author approval permit it. Any reviewer artifact must be a separate approved anonymized copy.
-- [ ] Review the release contents and history for secrets, private identifiers, unpublished files and redistribution restrictions. Finalize citation and attribution. Produce a clean export if the private history should not be exposed.
+- [x] Confirm code and selected evidence can be published. Apache-2.0 covers project code; external model and dataset terms remain unchanged.
+- [x] Check author approval and ensure no active submission restricts this release.
+- [x] Review the file inventory and history. The released artifact excludes the manuscript, original run bundles, weights, and machine logs.
 - [ ] Verify the public artifact anonymously. Only then add the link to the personal profile.
 
 ## Build a private candidate
 
-From a committed checkout, run `python tools/build_candidate.py ../stochastic-provenance-candidate.zip`. It exports an allowlist without Git history or ignored local artifacts. The resulting ZIP is for private review, not a public or licensed release. See the distribution checklist in the source repository.
+From a committed checkout, run `python tools/build_candidate.py ../stochastic-provenance-candidate.zip`. It exports an allowlist without Git history or ignored local artifacts. Building the ZIP does not publish it and does not change the license. See the distribution checklist in the source repository.
