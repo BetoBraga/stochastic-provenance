@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "Private draft artifact. Confirm approved public citation and complete authorship before external use."
+title: "Stochastic Provenance"
+type: software
+authors:
+  - family-names: Braga
+    given-names: Roberto
