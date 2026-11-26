@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="328" viewBox="0 0 920 328" role="img" aria-labelledby="title desc">
+<title id="title">Stochastic Provenance evidence register</title>
+<desc id="desc">12,288 matching token decisions in the tested matrix. One Qwen workload reached 2.04 times baseline speed. One decode-heavy Phi workload reached 0.59 times baseline speed.</desc>
+<rect x="1" y="1" width="918" height="326" rx="17" fill="#101921" stroke="#366174" stroke-width="2"/>
+<path d="M32 64H888 M32 214H888 M319 226V301 M606 226V301" fill="none" stroke="#366174"/>
+<g font-family="ui-monospace, Consolas, monospace" font-size="17" font-weight="700" letter-spacing="2" fill="#9ddff4">
+<text x="32" y="43">ROBERTO BRAGA</text><text x="888" y="43" text-anchor="end">RESEARCH / 01</text></g>
+<text x="32" y="117" font-family="Georgia, serif" font-size="41" fill="#eef6fa">One prefix.</text>
+<text x="32" y="165" font-family="Georgia, serif" font-size="41" fill="#eef6fa">Many paths.</text>
+<g fill="none" stroke-linecap="round" stroke-width="2.5">
+<path d="M435 134H560" stroke="#9ddff4" stroke-width="5"/>
+<path d="M560 134 C608 134 602 92 656 92 H878 M560 134H878 M560 134 C608 134 602 176 656 176 H878" stroke="#366174"/>
+<path d="M560 134 C608 134 602 92 656 92 H878 M560 134H878" stroke="#9ddff4"/>
+<path d="M560 134 C608 134 602 176 656 176 H878" stroke="#f6be97"/>
+</g>
+<circle cx="560" cy="134" r="7" fill="#9ddff4"/><circle cx="878" cy="92" r="5" fill="#9ddff4"/><circle cx="878" cy="134" r="5" fill="#9ddff4"/><circle cx="878" cy="176" r="5" fill="#f6be97"/>
+<g font-family="ui-monospace, Consolas, monospace">
+<g font-weight="700" font-size="39" fill="#eef6fa"><text x="32" y="269">12,288</text><text x="342" y="269">2.04×</text><text x="629" y="269" fill="#f6be97">0.59×</text></g>
+<g font-size="18" fill="#afc4d0"><text x="32" y="298">token decisions matched</text><text x="342" y="298">selected Qwen case</text><text x="629" y="298">decode-heavy Phi case</text></g>
+</g></svg>
