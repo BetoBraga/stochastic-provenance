@@ -3,54 +3,78 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
-<meta name="description" content="A research preprint by Roberto Márcio Braga on sharing language model prefix state without changing the semantics of stochastic trajectories.">
-<title>Stochastic Provenance | Roberto Braga</title>
-<link rel="stylesheet" href="style.css">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Research preprint on preserving stochastic trajectories while sharing language model prefix state, by Roberto Márcio Braga.">
+<title>Stochastic Provenance // Research files</title>
+<link rel="stylesheet" href="style.css?v=signal">
 </head>
 <body>
-<main id="main">
-<nav aria-label="Study navigation"><a class="wordmark" href="https://github.com/BetoBraga">Roberto Braga</a><a href="#findings">Findings</a><a href="#reproduce">Reproduce</a></nav>
-<header>
-<p class="label">Research / 01 · Inference systems</p>
+<a class="skip" href="#content">Skip to research</a>
+<main class="shell">
+<div class="titlebar"><span>◆ &nbsp; SP_RESEARCH.EXE</span><span class="topfile">FILE 01 / PUBLIC</span></div>
+<nav class="toolbar" aria-label="Research navigation">
+<a href="https://github.com/BetoBraga">« Personal index</a>
+<a href="#question">01 / Method</a>
+<a href="#findings">02 / Results</a>
+<a href="#reproduce">03 / Reproduce</a>
+</nav>
+<div class="content" id="content">
+<header class="cover">
+<div class="cover-copy">
+<p class="serial"><span aria-hidden="true">▰▰▰</span> &nbsp; INFERENCE SYSTEMS / OCT 2026</p>
 <h1>Stochastic<br>Provenance</h1>
-<p class="dek">Share the prefix.<br>Keep the randomness separate.</p>
-<p class="byline">Roberto Márcio Braga · October 2026 · Research preprint</p>
-<div class="actions"><a class="primary" href="stochastic-provenance-preprint.pdf">Read the preprint <small>PDF</small></a><a href="https://github.com/BetoBraga/stochastic-provenance#03--run-in-under-a-minute">Run the CPU demo</a></div>
+<p class="tagline">Share the prefix.<br>Keep the randomness separate.</p>
+<p class="byline">Roberto Márcio Braga · Research preprint</p>
+<div class="badges" aria-label="Research links">
+<a href="stochastic-provenance-preprint.pdf"><img width="88" height="31" src="88x31-paper.svg" alt="Read the preprint PDF"></a>
+<a href="https://github.com/BetoBraga/stochastic-provenance#03--run-in-under-a-minute"><img width="88" height="31" src="88x31-demo.svg" alt="Run the CPU demo"></a>
+<a href="https://github.com/BetoBraga/stochastic-provenance"><img width="88" height="31" src="88x31-code.svg" alt="View the source code"></a>
+</div>
+</div>
+<figure class="viewport"><img width="520" height="345" src="signal-aperture.svg" alt="An indigo and pink wireframe aperture on a raster grid; illustration, not experimental data."></figure>
 </header>
-<a class="register" href="#findings" aria-label="Jump to the measured findings">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="evidence-register-dark.svg">
-  <img width="920" height="328" src="evidence-register-light.svg" alt="Stochastic Provenance evidence register: 12,288 of 12,288 matched token decisions in semantic tests; 2.04 times speedup in one Qwen case; 0.59 times in a decode-heavy Phi case.">
-</picture>
-</a>
+<div class="ticker"><b>● &nbsp; 12,288 / 12,288</b><span>Matching token decisions in the tested semantic matrix</span></div>
 <section aria-labelledby="question">
-<p class="label">01 / Question</p>
+<p class="tab">01 / METHOD.LOG</p>
 <h2 id="question">What can two branches share?</h2>
-<p>If a model reads the same prompt 32 times to give you 32 answers, which work can you skip? The model can process the prefix once. The harder part is making sure each answer still gets its own random draws. Sharing those draws can make branches move together even when each one looks fine in isolation.</p>
+<p>If a model reads the same prompt 32 times to give you 32 answers, which work can you skip? The model can process the prefix once. The harder part is making sure each answer still gets its own random draws. Sharing those draws can make branches move together even when each looks fine in isolation.</p>
 <p>The study separates the state you can reuse from the sampling events that belong to each path. Then it checks token choices against a reference before counting time or memory.</p>
 </section>
 <section aria-labelledby="findings">
-<p class="label">02 / Findings</p>
+<p class="tab">02 / SCOPE.DAT</p>
 <h2 id="findings">Agreement first. Speed second.</h2>
-<p>All <strong>192 trajectories and 12,288 token decisions</strong> matched across three models and two numerical policies in the tested semantic matrix. Every pair received the same path-local Philox draws. Reusing one stream across four paths collapsed four distinct trajectories to one in all six negative-control cells.</p>
-<div class="index"><p class="label" id="comparison">Measured on one RTX 5060 Ti</p>
-<dl aria-labelledby="comparison">
-<div><dt>Qwen3-0.6B <span>Selected workload · paired records</span></dt><dd><strong>2.04×</strong> baseline speed <span>46.7% lower peak allocated GPU memory</span></dd></div>
-<div><dt>Phi-4-mini <span>Decode-heavy · aggregate evidence</span></dt><dd><strong>0.59×</strong> baseline speed <span>28.2% lower peak allocated GPU memory</span></dd></div>
-</dl></div>
-<details><summary>What these numbers do not tell you</summary>
-<p>The timing baseline duplicates the prefix across the batch. The tests do not compare production serving engines or establish a general speedup. Semantic counts and Phi timings are historical aggregates; only selected Qwen timing pairs are included. Peak allocated GPU memory is not whole-device usage or energy consumption.</p>
+<p>All <strong>192 trajectories and 12,288 token decisions</strong> matched across three models and two numerical policies. Every pair received the same path-local Philox draws. Reusing one stream across four paths collapsed four distinct trajectories to one in all six negative-control cells.</p>
+<fieldset class="scope">
+<legend>WORKLOAD COMPARATOR</legend>
+<p class="scope-meta">RTX 5060 Ti · two selected cases · same hardware, different workloads</p>
+<input type="radio" name="measure" id="time" checked aria-controls="speed-screen"><label for="time">01 / SPEED</label>
+<input type="radio" name="measure" id="memory" aria-controls="memory-screen"><label for="memory">02 / GPU MEMORY</label>
+<div class="screens">
+<div id="speed-screen" class="screen speed">
+<p class="screen-note">Speed relative to baseline · solid bars = shared prefix · dashed marker = baseline (1×)</p>
+<dl><div><dt>Qwen3-0.6B</dt><dd><span class="track" aria-hidden="true"><span class="fill q" style="--w:81.76%"></span></span><strong>2.04×</strong></dd></div>
+<div><dt>Phi-4-mini</dt><dd><span class="track" aria-hidden="true"><span class="fill p" style="--w:23.48%"></span></span><strong>0.59×</strong></dd></div></dl>
+</div>
+<div id="memory-screen" class="screen memory">
+<p class="screen-note">Peak allocated GPU memory · bars show share of the respective baseline (100%)</p>
+<dl><div><dt>Qwen3-0.6B</dt><dd><span class="track" aria-hidden="true"><span class="fill q" style="--w:53.3%"></span></span><strong>46.7% less</strong></dd></div>
+<div><dt>Phi-4-mini</dt><dd><span class="track" aria-hidden="true"><span class="fill p" style="--w:71.8%"></span></span><strong>28.2% less</strong></dd></div></dl>
+</div>
+</div>
+</fieldset>
+<details><summary>Open measurement notes and limits</summary>
+<p>Qwen3-0.6B is a selected workload with paired records. Phi-4-mini is a decode-heavy case reported as aggregate evidence. The timing baseline duplicates the prefix across the batch. These tests do not compare production serving engines or establish a general speedup. Semantic counts are historical aggregates. Peak allocated GPU memory is not whole-device usage or energy consumption.</p>
 </details>
-<p><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/docs/evidence.md">Inspect workloads, intervals and limitations →</a></p>
+<p><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/docs/evidence.md">Inspect workloads, intervals and limitations ↗</a></p>
 </section>
 <section aria-labelledby="reproduce">
-<p class="label">03 / Reproduce</p>
+<p class="tab">03 / README.TXT</p>
 <h2 id="reproduce">Start without a GPU.</h2>
 <p>The CPU demo checks whether each independently sampled branch keeps its token decisions when it shares the prefix. It is a semantic check, not a latency benchmark. The code is Apache 2.0.</p>
-<div class="actions"><a class="primary" href="https://github.com/BetoBraga/stochastic-provenance#03--run-in-under-a-minute">Run the CPU demo</a><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/docs/reproduction.md">Reproduction guide</a><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/CITATION.cff">Cite this work</a></div>
+<p><a href="https://github.com/BetoBraga/stochastic-provenance#03--run-in-under-a-minute">Run the CPU demo ↗</a> · <a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/docs/reproduction.md">Reproduction guide</a> · <a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/CITATION.cff">Cite this work</a></p>
 </section>
-<footer><a href="https://github.com/BetoBraga">GitHub profile</a><a href="https://github.com/BetoBraga/stochastic-provenance">Source repository</a></footer>
+</div>
+<footer class="status"><span>PUBLIC RESEARCH FILE · OCT 2026</span><a href="https://github.com/BetoBraga">Roberto Braga ↗</a></footer>
 </main>
 </body>
 </html>
