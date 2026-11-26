@@ -1,0 +1,100 @@
+{
+  "performance": [
+    {
+      "id": "qwen06_high_reuse",
+      "model": "Qwen3-0.6B",
+      "prompt_tokens": 1024,
+      "decode_tokens": 16,
+      "trajectories": 32,
+      "baseline_seconds": 6.52,
+      "shared_seconds": 3.19,
+      "ratio": 2.044,
+      "ci95_low": 2.036,
+      "ci95_high": 2.049,
+      "baseline_gib": 10.69,
+      "shared_gib": 5.7,
+      "reduction_pct": 46.7,
+      "evidence": "paired_records"
+    },
+    {
+      "id": "qwen4_high_reuse",
+      "model": "Qwen3-4B",
+      "prompt_tokens": 1024,
+      "decode_tokens": 16,
+      "trajectories": 8,
+      "baseline_seconds": 4.86,
+      "shared_seconds": 2.25,
+      "ratio": 2.162,
+      "ci95_low": 2.161,
+      "ci95_high": 2.165,
+      "baseline_gib": 11.62,
+      "shared_gib": 9.09,
+      "reduction_pct": 21.8,
+      "evidence": "paired_records"
+    },
+    {
+      "id": "phi_high_reuse",
+      "model": "Phi-4-mini",
+      "prompt_tokens": 1024,
+      "decode_tokens": 16,
+      "trajectories": 16,
+      "baseline_seconds": 6.96,
+      "shared_seconds": 2.86,
+      "ratio": 2.44,
+      "ci95_low": 2.425,
+      "ci95_high": 2.443,
+      "baseline_gib": 13.94,
+      "shared_gib": 9.89,
+      "reduction_pct": 29.1,
+      "evidence": "aggregate_only"
+    },
+    {
+      "id": "qwen4_capacity",
+      "model": "Qwen3-4B",
+      "prompt_tokens": 1024,
+      "decode_tokens": 16,
+      "trajectories": 16,
+      "baseline_seconds": 57.98,
+      "shared_seconds": 3.75,
+      "ratio": 15.474,
+      "ci95_low": 15.253,
+      "ci95_high": 15.919,
+      "baseline_gib": 15.74,
+      "shared_gib": 10.68,
+      "reduction_pct": 32.2,
+      "evidence": "paired_records"
+    },
+    {
+      "id": "phi_decode_dominated",
+      "model": "Phi-4-mini",
+      "prompt_tokens": 1024,
+      "decode_tokens": 64,
+      "trajectories": 16,
+      "baseline_seconds": 15.39,
+      "shared_seconds": 26.21,
+      "ratio": 0.587,
+      "ci95_low": 0.561,
+      "ci95_high": 0.816,
+      "baseline_gib": 13.94,
+      "shared_gib": 10.02,
+      "reduction_pct": 28.2,
+      "evidence": "aggregate_only"
+    }
+  ],
+  "semantics": {
+    "models": [
+      "Qwen3-0.6B",
+      "Qwen3-4B",
+      "Phi-4-mini"
+    ],
+    "policies": [
+      "strict_eager",
+      "operational_sdpa"
+    ],
+    "prompts_per_cell": 4,
+    "paths_per_prompt": 8,
+    "steps_per_path": 64,
+    "matched_paths": 192,
+    "matched_decisions": 12288
+  }
+}

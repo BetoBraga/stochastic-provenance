@@ -1,0 +1,16 @@
+name: Reproduction report
+description: Report an agreement, divergence or timing result.
+title: "[Reproduction]: "
+body:
+  - type: textarea
+    attributes:
+      label: Revision and environment
+      description: Include repository and model revisions, OS, GPU, runtime, attention policy and dtype. Do not include credentials or private machine logs.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected and observed
+      description: Include the exact command, public or synthetic input identifier, path count, and the statistic that agreed or diverged.
+    validations:
+      required: true
