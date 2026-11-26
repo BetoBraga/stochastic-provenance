@@ -13,7 +13,7 @@ Do not change repository visibility or announce the project until the release ow
 
 ## Mandatory before public release
 
-- [ ] Confirm license choice, rights holders, scope of data/code redistribution and any required attribution. See the [license candidate](license-review.md).
+- [x] Repository owner cleared code and data for publication and approved Apache-2.0 for the code. Verify upstream attribution and precise data terms in the final export.
 - [ ] Verify publication and review status. If double-anonymous review applies, do not identify the work in the GitHub profile until the venue rules and author approval permit it. Any reviewer artifact must be a separate approved anonymized copy.
 - [ ] Review the release contents and history for secrets, private identifiers, unpublished files and redistribution restrictions. Finalize citation and attribution. Produce a clean export if the private history should not be exposed.
 - [ ] Verify the public artifact anonymously. Only then add the link to the personal profile.

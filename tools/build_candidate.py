@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ALLOW = (
-    "README.md", "CITATION.cff", "SECURITY.md", "CONTRIBUTING.md", "CHANGELOG.md",
+    "README.md", "LICENSE", "CITATION.cff", "SECURITY.md", "CONTRIBUTING.md", "CHANGELOG.md",
     ".gitattributes", ".gitignore", ".github", "stochastic_provenance", "tests",
     "docs/method.md", "docs/reproduction.md", "docs/evidence.md",
     "research/v3.1", "evidence", "tools/check_evidence.py", "tools/verify_sources.py",
@@ -24,7 +24,7 @@ def main():
          "-o", str(output), "HEAD", "--", *ALLOW],
         cwd=ROOT, check=True,
     )
-    print(f"Created {output} for private review only; this is not a licensed release.")
+    print(f"Created {output} for private review only; this does not publish the repository.")
 
 
 if __name__ == "__main__":

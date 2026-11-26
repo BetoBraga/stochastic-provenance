@@ -49,3 +49,7 @@ The fixture shares one immutable prefix across three branches, checks their toke
 | [Reproduction](docs/reproduction.md) | Offline checks and the separate GPU procedure |
 
 [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Citation metadata](CITATION.cff)
+
+## License
+
+The project code is licensed under [Apache-2.0](LICENSE). This license does not relicense third-party models, datasets, or software.
