@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="A research preprint by Roberto Márcio Braga on sharing language model prefix state without changing the semantics of stochastic trajectories.">
+<title>Stochastic Provenance · Roberto Márcio Braga</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header>
+<p class="eyebrow">INFERENCE SYSTEMS / RESEARCH PREPRINT</p>
+<h1>Stochastic<br>Provenance</h1>
+<p class="dek">Share the prefix.<br>Preserve the trajectory.</p>
+<p class="byline">Roberto Márcio Braga <span>·</span> October 2026</p>
+<div class="actions"><a class="primary" href="stochastic-provenance-preprint.pdf">Read the preprint <small>PDF</small></a><a href="https://github.com/BetoBraga/stochastic-provenance">View source ↗</a></div>
+</header>
+<section aria-labelledby="question">
+<p class="eyebrow">01 / QUESTION</p>
+<h2>What can two branches share?</h2>
+<p>When a language model generates several continuations of the same prompt, all branches can start from the same computed prefix. But sharing random draws across branches can make them move together, even if each branch still looks correct on its own. The paper treats prefix state and sampling events as separate identities: share the computation when its inputs match, not the randomness that makes each trajectory distinct.</p>
+</section>
+<section aria-labelledby="results">
+<p class="eyebrow">02 / FINDINGS</p>
+<h2>Agreement first. Speed second.</h2>
+<dl class="metrics">
+<div><dt>Matching trajectories</dt><dd>192/192</dd></div>
+<div><dt>Matching token decisions</dt><dd>12,288</dd></div>
+<div><dt>Fastest selected high-reuse case</dt><dd>2.44×</dd></div>
+</dl>
+<p>Shared-prefill continuation matched a serial batch-1 reference in the tested matrix: three models (Qwen3-0.6B, Qwen3-4B, Phi-4-mini), two numerical policies, four prompts, eight trajectories per prompt and 64 decoding steps. Each pair received the same path-local Philox draws. Reusing one random stream across four paths collapsed four distinct trajectories to one in all six negative-control cells.</p>
+<p>The 2.44× figure comes from a selected Phi-4-mini workload on a single RTX 5060 Ti, against a timing baseline that duplicates the prefix across the batch. A decode-heavy Phi case reduced peak allocated memory by 28.2% but took <strong>26.21 s instead of 15.39 s</strong>. These are controlled measurements, not a general speedup or a serving-engine comparison.</p>
+<p><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/docs/evidence.md">Inspect workloads, confidence intervals and limits ↗</a></p>
+</section>
+<section aria-labelledby="repro">
+<p class="eyebrow">03 / REPRODUCE</p>
+<h2>Start without a GPU.</h2>
+<p>The reference demo checks that independently sampled branches preserve their decisions when they share the same prefix. It is a semantic check, not a latency benchmark. Code is available under Apache 2.0.</p>
+<div class="actions"><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/docs/reproduction.md">Reproduction guide ↗</a><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/CITATION.cff">Cite this work ↗</a></div>
+</section>
+<footer>Research preprint · <a href="https://github.com/BetoBraga">Roberto Márcio Braga</a></footer>
+</main>
+</body>
+</html>
