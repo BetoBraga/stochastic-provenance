@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Academic reading view of Stochastic Provenance, a research preprint by Roberto Márcio Braga.">
+<title>Stochastic Provenance | Academic view</title>
+<link rel="stylesheet" href="academic.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to research</a>
+<header class="view" aria-label="Reading view">
+<a href="./">Y2K view</a>
+<span aria-current="page">Academic view</span>
+<p>Same study and PDF. The Y2K view has an interactive comparator; the academic view puts the method and findings in reading order.</p>
+</header>
+<main id="content" tabindex="-1">
+<article>
+<header>
+<p class="label">Research preprint · October 2026</p>
+<h1>Stochastic Provenance</h1>
+<p class="subtitle">A Systems Primitive for Semantics-Preserving Multi-Trajectory Inference</p>
+<p>Roberto Márcio Braga</p>
+<nav class="links" aria-label="Article resources"><a class="paper" href="stochastic-provenance-preprint.pdf">Read the full preprint (PDF)</a><a href="https://github.com/BetoBraga/stochastic-provenance">Source code</a><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/CITATION.cff">Citation</a></nav>
+</header>
+<section aria-labelledby="abstract">
+<h2 id="abstract">Abstract</h2>
+<p>When language-model inference branches from a shared prefix, deterministic state can be reused without reusing random draws. Reusing the draws can change how trajectories behave together, even if individual sampling distributions remain unchanged. This work studies when prefix reuse preserves each trajectory’s token decisions and measures when it saves time or memory.</p>
+</section>
+<section aria-labelledby="method">
+<h2 id="method">Method</h2>
+<p>A shared-prefill continuation and a serial batch-1 semantic reference received the same path-local Philox draws. The matrix crossed Qwen3-0.6B, Qwen3-4B and Phi-4-mini with strict eager and operational SDPA, using four prompts, eight trajectories per prompt and 64 decoding steps per model-policy cell. The timing comparison instead used a baseline that duplicated the prefix across the batch, on one RTX 5060 Ti.</p>
+<p><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/docs/method.md">Method and assumptions</a></p>
+</section>
+<section aria-labelledby="results">
+<h2 id="results">Results</h2>
+<p><strong>All 192 trajectories and all 12,288 token decisions matched</strong> in the tested semantic matrix. In all six negative-control cells, sharing one random stream across four paths collapsed four distinct trajectories to one.</p>
+<dl>
+<div><dt>Qwen3-0.6B, 16 decode tokens</dt><dd>2.04× wall-time ratio (baseline ÷ shared); 46.7% less peak allocated VRAM.</dd></div>
+<div><dt>Phi-4-mini, 64 decode tokens</dt><dd>0.59× wall-time ratio (baseline ÷ shared); 28.2% less peak allocated VRAM. Median wall time rose from 15.39 s to 26.21 s.</dd></div>
+</dl>
+</section>
+<section aria-labelledby="limits">
+<h2 id="limits">Limitations and reproduction</h2>
+<p>Exact agreement was observed in the tested matrix, not guaranteed across hardware, dtypes, backends or inputs. The selected timings are controlled harness measurements, not a production serving-engine comparison or a general speedup. Peak allocated VRAM is not whole-device usage or energy consumption. The dependency-free CPU demo checks semantics, not GPU latency.</p>
+<nav class="links" aria-label="Reproduction resources"><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/docs/evidence.md">Evidence and intervals</a><a href="https://github.com/BetoBraga/stochastic-provenance/blob/main/docs/reproduction.md">Reproduction guide</a></nav>
+</section>
+</article>
+</main>
+<footer><a href="https://github.com/BetoBraga">Roberto Márcio Braga</a> · Research preprint</footer>
+</body>
+</html>
